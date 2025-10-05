@@ -28,4 +28,3 @@ def visualize_from_dot(input_filename="best_tree_structure.txt", output_filename
 
 if __name__ == '__main__':
     visualize_from_dot()
-    qweqwe
