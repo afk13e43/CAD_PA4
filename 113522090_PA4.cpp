@@ -24,7 +24,7 @@ struct Shape
     int col_multiple;
     int row_multiple;
 };
-
+asdasdasds
 // 用於儲存一個裝置 (模組) 的資訊
 // 包含裝置名稱和一個或多個可能的形態
 struct Module
