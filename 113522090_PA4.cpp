@@ -24,7 +24,7 @@ struct Shape
     int col_multiple;
     int row_multiple;
 };
-asdasdasds
+
 // 用於儲存一個裝置 (模組) 的資訊
 // 包含裝置名稱和一個或多個可能的形態
 struct Module
@@ -1324,16 +1324,16 @@ int main(int argc, char *argv[])
     std::vector<Module> my_modules = parse_block_file(input_filename);
     std::cout << "成功解析 " << my_modules.size() << " 個模組。" << std::endl;
     double ans_cost = std::numeric_limits<double>::max();
-    Placer my_placer(my_modules, output_filename); // 將modules傳入Placer類別
+    Placer my_placer(my_modules, output_filename);
 
     while (my_placer.get_elapsed_time() < 580)
     {
-        my_placer.solve(); // 求最佳Placement
+        my_placer.solve();
         if (ans_cost > my_placer.get_best_cost())
         {
             cout << "找到更好的解，更新最佳成本: " << my_placer.get_best_cost() << endl;
             ans_cost = my_placer.get_best_cost();
-            my_placer.write_output(output_filename); // 輸出當前最佳解
+            my_placer.write_output(output_filename);
             // 畫b*tree的資料
             // my_placer.write_best_tree("best_tree_structure.txt");
         }

@@ -1,0 +1,19 @@
+# 編譯產物 / Build artifacts
+*.o
+*.exe
+*.tar
+*.out
+*.obj
+
+# 編譯出的執行檔（與主程式同名，無副檔名）
+113522090_PA4
+
+# Graphviz 中間檔（bs_tree.py 會產生）
+b_star_tree_graph
+
+# Python
+__pycache__/
+*.pyc
+
+# 編輯器 / OS
+.DS_Store
