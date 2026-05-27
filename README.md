@@ -119,7 +119,7 @@ make clean
 # 需要：pip install matplotlib pandas graphviz（bs_tree.py 另需系統安裝 Graphviz）
 
 # 畫 floorplan
-python show_placement.py out_case1.output -o floorplan_visualization.png
+python show_placement.py out_case2.output -o floorplan_visualization.png
 
 # 畫 B*-tree
 python bs_tree.py
@@ -127,7 +127,7 @@ python bs_tree.py
 
 擺放結果與 SA 收斂示意：
 
-| Floorplan | B\*-tree |
+| Floorplan（case2 擺放結果） | B\*-tree |
 | --- | --- |
 | ![Floorplan](floorplan_visualization.png) | ![B*-tree](b_star_tree_graph.png) |
 
