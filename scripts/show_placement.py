@@ -111,7 +111,7 @@ if __name__ == '__main__':
     # 使用 argparse 來處理命令列參數，讓腳本更具通用性
     parser = argparse.ArgumentParser(description="Visualize a floorplan layout from an output file.")
     parser.add_argument("input_file", help="Path to the input layout file (e.g., layout.txt)")
-    parser.add_argument("-o", "--output", default="floorplan_visualization.png", help="Path to save the output image file (default: floorplan_visualization.png)")
+    parser.add_argument("-o", "--output", default="figures/floorplan_visualization.png", help="Path to save the output image file (default: figures/floorplan_visualization.png)")
     
     args = parser.parse_args()
     

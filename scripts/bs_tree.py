@@ -1,7 +1,7 @@
 import os
 from graphviz import Source
 
-def visualize_from_dot(input_filename="best_tree_structure.txt", output_filename="b_star_tree_graph"):
+def visualize_from_dot(input_filename="figures/best_tree_structure.txt", output_filename="figures/b_star_tree_graph"):
     """
     直接從 Graphviz DOT 格式的文字檔產生視覺化圖表。
     """

@@ -22,4 +22,4 @@ def generate_block_file(filename="large_test.block", num_blocks=200,
     print(f"[✓] 產生完成: {filename} 共 {num_blocks} blocks")
 
 # 呼叫範例
-generate_block_file("case20000.block", num_blocks=2000)
+generate_block_file("cases/case20000.block", num_blocks=2000)

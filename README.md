@@ -93,10 +93,10 @@ MM1 0.0000 0.0000 (9.11 5.54 8 1)
 make                 # 產生執行檔 113522090_PA4
 
 # 執行（用法：<input.block> <output.output>）
-./113522090_PA4 case1.block out_case1.output
+./113522090_PA4 cases/case1.block cases/out_case1.output
 
 # 或透過 Makefile 的 run 目標
-make run input=case1.block output=out_case1.output
+make run input=cases/case1.block output=cases/out_case1.output
 
 # 清理編譯產物
 make clean
@@ -110,30 +110,34 @@ make clean
 
 | 腳本 | 用途 |
 | --- | --- |
-| [show_placement.py](show_placement.py) | 讀 `*.output` 畫出 floorplan |
-| [bs_tree.py](bs_tree.py) | 由 Graphviz DOT 檔 `best_tree_structure.txt` 渲染 B\*-tree 圖 |
-| [sample.py](sample.py) | 解析 SA 執行日誌，畫出溫度 vs. 成本 / 接受機率曲線 |
-| [測資生成器.py](測資生成器.py) | 隨機產生 `*.block` 測資 |
+| [scripts/show_placement.py](scripts/show_placement.py) | 讀 `*.output` 畫出 floorplan |
+| [scripts/bs_tree.py](scripts/bs_tree.py) | 由 Graphviz DOT 檔 `figures/best_tree_structure.txt` 渲染 B\*-tree 圖 |
+| [scripts/sample.py](scripts/sample.py) | 解析 SA 執行日誌 `cases/case.txt`，畫出溫度 vs. 成本 / 接受機率 (MA) |
+| [scripts/測資生成器.py](scripts/測資生成器.py) | 隨機產生 `*.block` 測資 |
 
 ```bash
 # 需要：pip install matplotlib pandas graphviz（bs_tree.py 另需系統安裝 Graphviz）
+# 以下指令請在專案根目錄執行
 
 # 畫 floorplan
-python show_placement.py out_case2.output -o floorplan_visualization.png
+python scripts/show_placement.py cases/out_case2.output
 
 # 畫 B*-tree
-python bs_tree.py
+python scripts/bs_tree.py
+
+# 畫 SA 收斂圖
+python scripts/sample.py
 ```
 
-擺放結果與 SA 收斂示意：
+以下圖均為 **case2** 的執行結果（floorplan 取自 580 秒完整解；B\*-tree 與 SA 收斂取自一次 ~25 秒短程跑解的紀錄）：
 
 | Floorplan（case2 擺放結果） | B\*-tree |
 | --- | --- |
-| ![Floorplan](floorplan_visualization.png) | ![B*-tree](b_star_tree_graph.png) |
+| ![Floorplan](figures/floorplan_visualization.png) | ![B*-tree](figures/b_star_tree_graph.png) |
 
-| SA 溫度 vs. 成本 | SA 溫度 vs. 接受機率 |
+| SA 溫度 vs. 成本 | SA 溫度 vs. 接受機率（MA window=30） |
 | --- | --- |
-| ![Temp vs Cost](temperature_vs_cost.png) | ![Temp vs Probability](temperature_vs_probability.png) |
+| ![Temp vs Cost](figures/temperature_vs_cost.png) | ![Temp vs Probability](figures/temperature_vs_probability.png) |
 
 ---
 
@@ -143,12 +147,15 @@ python bs_tree.py
 CAD_PA4/
 ├── 113522090_PA4.cpp        # 主程式（B*-tree + SA，正式提交版）
 ├── Makefile                 # 編譯 / 執行 / 清理
+├── README.md
 ├── doc/                     # 題目規格、Checker 說明、實作報告
-├── case1.block, case2.block, case20000.block, test.block, case.txt   # 測資
-├── *.output                 # 範例輸出
-├── show_placement.py, bs_tree.py, sample.py, 測資生成器.py            # 視覺化 / 測資工具
-├── *.png                    # 視覺化結果圖
-└── best_tree_structure.txt  # B*-tree 的 Graphviz DOT 輸出
+├── cases/                   # 測資 (*.block / *.output) 與 SA log (case.txt)
+├── scripts/                 # Python 視覺化與測資生成工具
+│   ├── show_placement.py, bs_tree.py, sample.py, 測資生成器.py
+└── figures/                 # 視覺化結果圖 + B*-tree DOT 輸出
+    ├── floorplan_visualization.png
+    ├── b_star_tree_graph.png, best_tree_structure.txt
+    ├── temperature_vs_cost.png, temperature_vs_probability.png
 ```
 
 ---

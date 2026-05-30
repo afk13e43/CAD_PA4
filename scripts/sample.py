@@ -70,18 +70,20 @@ def generate_plots(df):
     ax1.legend()
     
     # 儲存圖表
-    plt.savefig('temperature_vs_cost.png')
-    print("圖表 'temperature_vs_cost.png' 已儲存。")
+    plt.savefig('figures/temperature_vs_cost.png')
+    print("圖表 'figures/temperature_vs_cost.png' 已儲存。")
     plt.close(fig1)
 
 
-    # --- 圖表二：溫度 vs. 平均機率 ---
+    # --- 圖表二：溫度 vs. 平均機率 (Moving Average) ---
     fig2, ax2 = plt.subplots(figsize=(12, 7))
 
-    ax2.plot(df['Temp'], df['probability_avg'], marker='x', linestyle='--', color='r', markersize=4, label='Average Probability')
+    MA_WINDOW = 30
+    prob_ma = df['probability_avg'].rolling(window=MA_WINDOW, min_periods=1).mean()
+    ax2.plot(df['Temp'], prob_ma, linestyle='-', color='r', linewidth=2, label=f'Average Probability (MA window={MA_WINDOW})')
 
     # 設定圖表標題與座標軸標籤
-    ax2.set_title('Average Probability vs. Temperature', fontsize=16)
+    ax2.set_title(f'Average Probability vs. Temperature (Moving Avg, window={MA_WINDOW})', fontsize=16)
     ax2.set_xlabel('Temperature', fontsize=12)
     ax2.set_ylabel('Average Probability', fontsize=12)
 
@@ -90,8 +92,8 @@ def generate_plots(df):
     ax2.legend()
     
     # 儲存圖表
-    plt.savefig('temperature_vs_probability.png')
-    print("圖表 'temperature_vs_probability.png' 已儲存。")
+    plt.savefig('figures/temperature_vs_probability.png')
+    print("圖表 'figures/temperature_vs_probability.png' 已儲存。")
     plt.close(fig2)
 
 
@@ -99,7 +101,7 @@ if __name__ == '__main__':
     # 讀取 case.txt 檔案
     # 請確保 'case.txt' 檔案與此 python 檔在同一個資料夾中
     try:
-        with open('case.txt', 'r', encoding='utf-8') as f:
+        with open('cases/case.txt', 'r', encoding='utf-8') as f:
             file_content = f.read()
         
         # 解析檔案並產生圖表

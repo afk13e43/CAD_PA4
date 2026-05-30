@@ -1,0 +1,36 @@
+digraph BStarTree {
+    rankdir=TB;
+    node [shape=circle, style=filled, fillcolor=lightblue];
+    edge [fontsize=10];
+    "M108" [fillcolor=salmon];
+"M108" -> "M114" [label="R"];
+"M114" -> "M3" [label="R"];
+"M3" -> "M106" [label="L"];
+"M3" -> "M24" [label="R"];
+"M106" -> "M113" [label="R"];
+"M113" -> "M103" [label="R"];
+"M103" -> "M111" [label="L"];
+"M103" -> "M118" [label="R"];
+"M24" -> "M63" [label="L"];
+"M24" -> "M10" [label="R"];
+"M10" -> "M12" [label="L"];
+"M10" -> "M60" [label="R"];
+"M60" -> "M26" [label="L"];
+"M60" -> "M6" [label="R"];
+"M6" -> "M115" [label="R"];
+"M115" -> "M9" [label="L"];
+"M115" -> "M116" [label="R"];
+"M9" -> "M107" [label="L"];
+"M9" -> "M109" [label="R"];
+"M107" -> "M112" [label="L"];
+"M112" -> "M104" [label="L"];
+"M104" -> "M119" [label="R"];
+"M119" -> "M15" [label="R"];
+"M109" -> "M110" [label="L"];
+"M116" -> "M98" [label="R"];
+"M98" -> "M16" [label="R"];
+"M16" -> "M90" [label="L"];
+"M16" -> "M117" [label="R"];
+"M90" -> "M14" [label="L"];
+"M90" -> "M5" [label="R"];
+}
